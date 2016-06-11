@@ -87,8 +87,8 @@
 //#define SOFT_LPF_1ST_043HZ
 //#define SOFT_LPF_1ST_100HZ
 //#define SOFT_LPF_2ND_043HZ
-#define SOFT_LPF_2ND_088HZ
-//#define SOFT_LPF_4TH_088HZ
+//#define SOFT_LPF_2ND_088HZ
+#define SOFT_LPF_4TH_088HZ
 //#define SOFT_LPF_4TH_160HZ
 //#define SOFT_LPF_4TH_250HZ
 //#define SOFT_LPF_NONE
@@ -211,9 +211,9 @@
 // motor curve to use
 // the pwm frequency has to be set independently
 //#define MOTOR_CURVE_NONE
-#define MOTOR_CURVE_6MM_H101_490HZ
+//#define MOTOR_CURVE_6MM_H101_490HZ
 //#define MOTOR_CURVE_6MM_490HZ
-//#define MOTOR_CURVE_85MM_8KHZ
+#define MOTOR_CURVE_85MM_8KHZ
 //#define MOTOR_CURVE_85MM_32KHZ
 
 // pwm frequency for motor control
