@@ -1,6 +1,7 @@
 #include "gd32f1x0.h"
 #include "drv_gpio.h"
 #include "config.h"
+#include "hardware.h"
 
 void gpio_init(void)
 {
@@ -30,30 +31,28 @@ void gpio_init(void)
 
 }
 
-#ifdef BUZZER_ENABLE
 
-// init buzzer separately because it may use SWDAT don't want to enable it right away
-int gpio_init_buzzer(void)
+#ifdef FPV_ON
+// init fpv pin separately because it may use SWDAT/SWCLK don't want to enable it right away
+int gpio_init_fpv(void)
 {
-	// only repurpose the pin after rx/tx have bound or 10s has elapsed
+	// only repurpose the pin after rx/tx have bound
 	extern int rxmode;
-	extern unsigned long maintime;
-	if (RX_MODE_NORMAL == rxmode || maintime > 10000000)
+	if (rxmode == RX_MODE_NORMAL)
 	{
 		// set gpio pin as output
 		GPIO_InitPara GPIO_InitStructure;
 
 		// common settings to set ports
-		GPIO_InitStructure.GPIO_Pin = BUZZER_PIN;
+		GPIO_InitStructure.GPIO_Pin =  FPV_PIN;
 		GPIO_InitStructure.GPIO_Mode = GPIO_MODE_OUT;
 		GPIO_InitStructure.GPIO_Speed = GPIO_SPEED_50MHZ;
 		GPIO_InitStructure.GPIO_OType = GPIO_OTYPE_PP;
 		GPIO_InitStructure.GPIO_PuPd = GPIO_PUPD_NOPULL;
 
-		GPIO_Init(BUZZER_PIN_PORT,&GPIO_InitStructure);
+		GPIO_Init(FPV_PIN_PORT,&GPIO_InitStructure);
 		return 1;
 	}
 	return 0;
 }
 #endif
-
