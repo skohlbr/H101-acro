@@ -14,7 +14,7 @@
 float apidkp[APIDNUMBER] = { 1.8e-2, 1.8e-2, 0e-1 };	//
 
 // Ki                        ROLL     PITCH    YAW
-float apidki[APIDNUMBER] = { 0.0e-2, 0.0e-2, 0e-1 };	//
+float apidki[APIDNUMBER] = { 1.0e-2, 1.0e-2, 0e-1 };	//
 
 
 
